@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827"><meta name="description" content="A personal AI assistant for ideas, study, writing, and everyday tasks.">
+<title>Nova — Personal AI Assistant</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-icon">✦</div><div><strong>NOVA</strong><small>PERSONAL AI</small></div></div>
+  <button class="new-chat" id="newChat"><span>＋</span> New conversation</button>
+  <div class="nav-label">WORKSPACE</div>
+  <button class="nav-item active" data-panel="chat"><span>◉</span> AI Chat</button>
+  <button class="nav-item" data-panel="notes"><span>▤</span> My Notes</button>
+  <button class="nav-item" data-panel="prompts"><span>✧</span> Prompt Library</button>
+  <div class="nav-label history-label">RECENT CHATS</div><div id="chatHistory" class="chat-history"></div>
+  <div class="sidebar-bottom"><div class="profile"><div class="avatar">Y</div><div class="profile-info"><strong>My Assistant</strong><small>Personal workspace</small></div><button class="icon-btn" id="settingsBtn" title="Settings">⚙</button></div></div>
+</aside>
+<main class="main">
+<header class="topbar"><button class="icon-btn menu-btn" id="menuBtn">☰</button><div class="top-title"><span class="status-dot"></span><span id="topTitle">AI Chat</span></div><div class="top-actions"><button class="icon-btn" id="themeBtn" title="Toggle theme">☼</button><button class="icon-btn" id="exportBtn" title="Export chat">⇩</button></div></header>
+<section class="chat-panel" id="chatPanel">
+<div class="welcome" id="welcome"><div class="welcome-mark">✦</div><p class="eyebrow">YOUR PERSONAL AI</p><h1>What can I help<br><span>you with today?</span></h1><p class="welcome-sub">Think, create, learn, and get things done — all in one place.</p>
+<div class="suggestions"><button class="suggestion" data-prompt="Help me plan a productive day with realistic priorities."><span class="suggestion-icon">◷</span><strong>Plan my day</strong><small>Make a simple daily plan</small></button><button class="suggestion" data-prompt="Explain a difficult topic clearly with examples and a short summary."><span class="suggestion-icon">✎</span><strong>Learn something</strong><small>Break down a topic</small></button><button class="suggestion" data-prompt="Help me brainstorm creative ideas for a personal project."><span class="suggestion-icon">✧</span><strong>Brainstorm ideas</strong><small>Explore something new</small></button><button class="suggestion" data-prompt="Help me write a clear, polished message. Ask me for context if needed."><span class="suggestion-icon">⌁</span><strong>Write something</strong><small>Messages, drafts, and more</small></button></div></div>
+<div class="messages" id="messages"></div>
+</section>
+<div class="composer-wrap"><div class="composer" id="composer"><textarea id="messageInput" rows="1" placeholder="Ask Nova anything…"></textarea><div id="attachmentTray" class="attachment-tray hidden"></div><input id="fileInput" type="file" multiple accept=".pdf,.docx,.txt,.md,.csv,.json,.png,.jpg,.jpeg,.webp" hidden><div class="composer-tools"><div class="tool-left"><button class="tool-btn" id="attachBtn" title="Upload files">＋</button><button class="tool-btn" id="voiceBtn" title="Voice input">🎙</button><span class="hint">Upload PDF, DOCX, TXT, images · Enter to send</span></div><button class="send-btn" id="sendBtn" title="Send message">↑</button></div></div><div class="disclaimer">Nova can make mistakes. Verify important information.</div></div>
+<section class="content-panel hidden" id="notesPanel"><div class="section-head"><div><p class="eyebrow">YOUR SPACE</p><h1>My Notes</h1><p>Keep ideas, reminders, and snippets close by.</p></div><button class="primary-btn" id="addNote">＋ New note</button></div><div id="notesGrid" class="notes-grid"></div></section>
+<section class="content-panel hidden" id="promptsPanel"><div class="section-head"><div><p class="eyebrow">QUICK START</p><h1>Prompt Library</h1><p>Ready-to-use prompts to get you moving.</p></div></div><div class="prompt-grid" id="promptGrid"></div></section>
+</main>
+</div>
+<div class="modal-backdrop hidden" id="settingsModal"><div class="modal"><div class="modal-head"><div><p class="eyebrow">PERSONALIZE</p><h2>Settings</h2></div><button class="icon-btn" id="closeSettings">✕</button></div><label>AI provider</label><select id="provider"><option value="gemini">Google Gemini</option><option value="openai">OpenAI-compatible API</option></select><label>API key <span class="muted">(kept in this browser only)</span></label><input id="apiKey" type="password" placeholder="Paste your API key"><label>Model</label><input id="model" placeholder="gemini-2.5-flash"><small class="muted">For a fast balance of quality and speed, use a Flash model.</small><div id="endpointWrap" class="hidden"><label>API base URL</label><input id="endpoint" placeholder="https://api.openai.com/v1/chat/completions"></div><div class="settings-note">Your API key is stored in this browser's local storage. This static website has no private backend, so do not use a sensitive or shared-device key. Usage limits and charges depend on your provider.</div><div class="modal-actions"><button class="secondary-btn" id="clearKey">Clear key</button><button class="primary-btn" id="saveSettings">Save settings</button></div></div></div>
+<div class="modal-backdrop hidden" id="noteModal"><div class="modal note-modal"><div class="modal-head"><h2 id="noteModalTitle">New note</h2><button class="icon-btn" id="closeNote">✕</button></div><input id="noteTitle" placeholder="Note title"><textarea id="noteBody" rows="8" placeholder="Write something…"></textarea><div class="modal-actions"><button class="secondary-btn" id="deleteNote">Delete</button><button class="primary-btn" id="saveNote">Save note</button></div></div></div>
+<script src="app.js"></script>
+</body></html>
